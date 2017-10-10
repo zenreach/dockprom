@@ -8,7 +8,7 @@ A monitoring solution for Docker hosts and containers with [Prometheus](https://
 Clone this repository on your Docker host, cd into dockprom directory and run compose up:
 
 ```bash
-git clone https://github.com/stefanprodan/dockprom
+git clone https://github.com/zenreach/dockprom
 cd dockprom
 
 ADMIN_USER=admin ADMIN_PASSWORD=admin docker-compose up -d
@@ -42,12 +42,12 @@ Use the following values to add the Prometheus container as data source:
 
 Save and close this window.
 
-One by one, import all 4 dashboard templates from the [grafana](https://github.com/stefanprodan/dockprom/tree/master/grafana) directory. 
+One by one, import all 4 dashboard templates from the [grafana](https://github.com/zenreach/dockprom/tree/master/grafana) directory. 
 From the Grafana menu, choose ***Dashboards*** and click on ***Import***. Do this for all 4 dashboards.
 
 ***Docker Host Dashboard***
 
-![Host](https://raw.githubusercontent.com/stefanprodan/dockprom/master/screens/Grafana_Docker_Host.png)
+![Host](https://raw.githubusercontent.com/zenreach/dockprom/master/screens/Grafana_Docker_Host.png)
 
 The Docker Host Dashboard shows key metrics for monitoring the resource usage of your server:
 
@@ -61,7 +61,7 @@ The Docker Host Dashboard shows key metrics for monitoring the resource usage of
 
 ***Docker Containers Dashboard***
 
-![Containers](https://raw.githubusercontent.com/stefanprodan/dockprom/master/screens/Grafana_Docker_Containers.png)
+![Containers](https://raw.githubusercontent.com/zenreach/dockprom/master/screens/Grafana_Docker_Containers.png)
 
 The Docker Containers Dashboard shows key metrics for monitoring running containers:
 
@@ -77,7 +77,7 @@ Note that this dashboard doesn't show the containers that are part of the monito
 
 ***Monitor Services Dashboard***
 
-![Monitor Services](https://raw.githubusercontent.com/stefanprodan/dockprom/master/screens/Grafana_Prometheus.png)
+![Monitor Services](https://raw.githubusercontent.com/zenreach/dockprom/master/screens/Grafana_Prometheus.png)
 
 The Monitor Services Dashboard shows key metrics for monitoring the containers that make up the monitoring stack:
 
@@ -106,9 +106,9 @@ Make sure you set the heap size to a maximum of 50% of the total physical memory
 
 I've setup three alerts configuration files:
 
-* Monitoring services alerts [targets.rules](https://github.com/stefanprodan/dockprom/blob/master/prometheus/targets.rules)
-* Docker Host alerts [host.rules](https://github.com/stefanprodan/dockprom/blob/master/prometheus/host.rules)
-* Docker Containers alerts [containers.rules](https://github.com/stefanprodan/dockprom/blob/master/prometheus/containers.rules)
+* Monitoring services alerts [targets.rules](https://github.com/zenreach/dockprom/blob/master/prometheus/targets.rules)
+* Docker Host alerts [host.rules](https://github.com/zenreach/dockprom/blob/master/prometheus/host.rules)
+* Docker Containers alerts [containers.rules](https://github.com/zenreach/dockprom/blob/master/prometheus/containers.rules)
 
 You can modify the alert rules and reload them by making a HTTP POST call to Prometheus:
 
@@ -223,7 +223,7 @@ A complete list of integrations can be found [here](https://prometheus.io/docs/a
 
 You can view and silence notifications by accessing `http://<host-ip>:9093`.
 
-The notification receivers can be configured in [alertmanager/config.yml](https://github.com/stefanprodan/dockprom/blob/master/alertmanager/config.yml) file.
+The notification receivers can be configured in [alertmanager/config.yml](https://github.com/zenreach/dockprom/blob/master/alertmanager/config.yml) file.
 
 To receive alerts via Slack you need to make a custom integration by choose ***incoming web hooks*** in your Slack team app page. 
 You can find more details on setting up Slack integration [here](http://www.robustperception.io/using-slack-with-the-alertmanager/).
@@ -244,4 +244,4 @@ receivers:
             api_url: 'https://hooks.slack.com/services/<webhook-id>'
 ```
 
-![Slack Notifications](https://raw.githubusercontent.com/stefanprodan/dockprom/master/screens/Slack_Notifications.png)
+![Slack Notifications](https://raw.githubusercontent.com/zenreach/dockprom/master/screens/Slack_Notifications.png)
